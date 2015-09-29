@@ -1,6 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, request, redirect, flash, jsonify
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from database_setup import Base, Owner, Lists, Items
 
 app = Flask(__name__)
+
+engine = create_engine('sqlite:///finalProject.db')
+Base.metadata.bind = engine
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 #Fake Owners
 owner = {'name': 'Zacarias Bendeck', 'id': '1'}
