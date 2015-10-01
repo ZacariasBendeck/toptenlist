@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+			<h2>Check out all these awesome Top Ten Lists!</h2> 
+			<h3> You can also make your own  </h3>
+              
+                </div>
+            </div>
+            <div class="row">
+                
+                <!-- start item for loop -->
+            {% set cnt = 0 %}  
+            {% for i in items %}
+            {% set cnt = cnt + 1 %}  
+                <div class="col-sm-4 portfolio-item">
+                    <h3>{{i.name}}</h3>
+                    <a href="#portfolioModal{{cnt}}" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                    <img src= {{i.pic_url}} class="img-responsive" alt="{{i.second_pic_url}}">
+                    <a href="{{url_for('editList', owner_id = owner.id, tlist_id = i.id)}}">Edit</a>
+                    <a href="{{url_for('deleteList', owner_id = owner.id, tlist_id = i.id)}}">Delete</a>
+
+                    
+                </p></div>
+                {% endfor %}
+{% endblock %}
+
+             
+
+             <!-- MY Portfolio Modals Looped -->
+{% block modal %}
+    {% set cnt = 0 %}
+    {% for i in items %}
+    {% set cnt = cnt + 1 %}
+    <div class="portfolio-modal modal fade" id="portfolioModal{{cnt}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>{{i.name}}</h2>
+                            <img src= "{{i.url}}" class="img-responsive img-centered" alt="" >
+                            <p>{{i.description}}</p>
+                            <ul class="list-inline item-details">
+                                <li><strong><a href="{{url_for('topTenItems', owner_id = owner.id, tlist_id = i.id)}}">Check it Out!</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+    </div>
+
+{% endblock %}
+
+<!--  End My Portfolio Modals Loops!!  -->
+  
+
+

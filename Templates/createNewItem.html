@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="#" method = 'POST'>
+	<h3>Create a new Item in </h3>
+	<h3><font color = 'red'>{{tlist.name}}</font></h3>
+	<h3><img src={{tlist.url}} class="img-responsive center-block" alt=""></h3>
+
+	    <dl>
+	    <dt>Name:</dt>
+	    <dd><input type ='text' size='30' name='name'></dd>
+	    <dt>Description:</dt>
+	    <input type ='text' size='30' name ='description'>
+	    <dt>Picture Url:</dt>
+	    <input type ='text' size='30' name = 'url'>
+	    </br>
+	    <dt> Video Url:</dt>
+	    <input type ='text' size='30' name = 'second_pic_url'>
+	    </br>
+	    <input type='submit' value='Create'>
+	    <a href="{{url_for('topTenItems', owner_id = owner.id, tlist_id = tlist.id)}}">   Cancel</a>
+
+    </form>
+
+
+{% endblock %}
+

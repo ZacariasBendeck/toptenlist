@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h3>Edit an Item!!</h3>
+	<h1>You are Editing <font color = "red">{{item.name}}</font> from {{tlist.name}}</h1>
+	<h4>  by {{owner.name}}</h4>
+
+	<h3><img src={{item.url}} class="img-responsive center-block" alt=""></h3>
+	<h4>{{item.description}}</h4>
+
+    <form action="#" method = 'POST'>
+
+	    <dl>
+	    <dt>Name:</dt>
+	    <dd><input type ='text' size='30' name='name' placeholder = {{item.name}}></dd>
+	    <dt>Rank:</dt>
+	    <input type ='number' size='30' name ='rank' placeholder = {{item.rank}}>
+	    <dt>Description:</dt>
+	    <input type ='text' size='30' name ='description' placeholder = {{item.description}}>
+	    <dt>Picture Url:</dt>
+	    <input type ='text' size='30' name = 'url' placeholder = {{item.url}}>
+	    </br>
+	    <dt> Video Url:</dt>
+	    <input type ='text' size='30' name = 'second_pic_url' placeholder = {{item.second_pic_url}}>
+	    </br>
+	    <input type='submit' value='Edit'>
+	    <a href="{{url_for('topTenItems', owner_id = owner.id, tlist_id = tlist.id)}}">   Cancel</a>
+
+    </form>
+
+{% endblock %}
+

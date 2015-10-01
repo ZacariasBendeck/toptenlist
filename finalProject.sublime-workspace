@@ -1,0 +1,891 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"own",
+				"ownerLists"
+			],
+			[
+				"item_",
+				"item_to_delete"
+			],
+			[
+				"tlist",
+				"tlist_id"
+			],
+			[
+				"delete",
+				"delete"
+			],
+			[
+				"it",
+				"item_id"
+			],
+			[
+				"l",
+				"list_id"
+			],
+			[
+				"owner",
+				"owner_id"
+			],
+			[
+				"List",
+				"ListID"
+			],
+			[
+				"Li",
+				"ListID"
+			],
+			[
+				"top",
+				"toptenlist_id"
+			],
+			[
+				"print",
+				"print_string"
+			],
+			[
+				"res",
+				"restaurant_id"
+			],
+			[
+				"message",
+				"messagecontent"
+			],
+			[
+				"new",
+				"new_restaurant"
+			],
+			[
+				"played",
+				"played"
+			],
+			[
+				"alr",
+				"already_played"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "database_setup.py",
+			"settings":
+			{
+				"buffer_size": 2574,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/J/fullstack/vagrant/Top Ten Youtube Project/database_setup.py",
+			"settings":
+			{
+				"buffer_size": 1465,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/J/fullstack/vagrant/restaurant/database_setup.py",
+			"settings":
+			{
+				"buffer_size": 1436,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/J/fullstack/vagrant/Top Ten Youtube Project/project.py",
+			"settings":
+			{
+				"buffer_size": 3604,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/J/fullstack/vagrant/Top Ten Youtube Project/templates/newlistitem.html",
+			"settings":
+			{
+				"buffer_size": 2297,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/J/fullstack/vagrant/Top Ten Youtube Project/templates/menu.html",
+			"settings":
+			{
+				"buffer_size": 3630,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/createNewItem.html",
+			"settings":
+			{
+				"buffer_size": 5406,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/no longer in use templates/deleteList2.html",
+			"settings":
+			{
+				"buffer_size": 6430,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/createNewOwner.html",
+			"settings":
+			{
+				"buffer_size": 5363,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/deleteOwner.html",
+			"settings":
+			{
+				"buffer_size": 4949,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/deleteList.html",
+			"settings":
+			{
+				"buffer_size": 4808,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<!DOCTYPE html>\n<html lang=\"en\"><head>\n\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n\n    <title>My Top Ten Lists - Zacarias Bendeck</title>\n\n    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->\n    <link href=\"/static/css/bootstrap.min.css\" rel=\"stylesheet\">\n\n    <!-- Custom CSS -->\n    <link href=\"/static/css/freelancer.css\" rel=\"stylesheet\">\n\n    <!-- Custom Fonts -->\n    <link href=\"/static/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">\n    <link href=\"http://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\">\n    <link href=\"http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic\" rel=\"stylesheet\" type=\"text/css\">\n\n    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->\n    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->\n    <!--[if lt IE 9]>\n        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n    <![endif]-->\n\n</head>\n\n<body id=\"page-top\" class=\"index\">\n    FB.getLoginStatus(function(response) {\n    statusChangeCallback(response);\n});\n\n    <!-- Navigation -->\n    <nav class=\"navbar navbar-default navbar-fixed-top\">\n        <div class=\"container\">\n            <!-- Brand and toggle get grouped for better mobile display -->\n            <div class=\"navbar-header page-scroll\">\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n                    <span class=\"sr-only\">Toggle navigation</span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                    <span class=\"icon-bar\"></span>\n                </button>\n                <!--  *note*   Insert Main Page Title Here -->\n                <a class=\"navbar-brand\" href=\"{{url_for('mainPage')}}\">Top Ten Lists</a>\n            </div>\n\n            <!-- Collect the nav links, forms, and other content for toggling -->\n            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n                <ul class=\"nav navbar-nav navbar-right\">\n                    <li class=\"hidden\">\n                        <a href=\"#page-top\"></a>\n                    </li>\n                    <li class=\"page-scroll\">\n                        <a href=\"#about\">About</a>\n                    </li>\n                    \n                    <li class=\"page-scroll\">\n                        <a href=\"#contact\">Login</a>\n                    </li>\n                </ul>\n            </div>\n            <!-- /.navbar-collapse -->\n        </div>\n        <!-- /.container-fluid -->\n    </nav>\n\n    <!-- Portfolio Grid Section -->\n    <section id=\"portfolio\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-lg-12 text-center\">\n\n                    <h2>Check Out the Top Ten List Authors!!</h2>\n                    {% with messages = get_flashed_messages() %}\n                    {% if messages %}\n\n                    <ul>\n                    {% for message in messages %}\n                      <li> <strong> {{message}} </strong> </li>\n                          {% endfor %}\n                    </ul>\n                            {% endif %}\n                    {% endwith %}\n                    <h6><a href=\"{{url_for('createNewOwner')}}\">   Create New Author</a></h6>\n\n                </div>\n            </div>\n            <div class=\"row\">\n                \n                <!-- start item for loop -->\n            {% set cnt = 0 %}\n            {% for i in items %}\n            {% set cnt = cnt + 1 %}\n                <div class=\"col-sm-3 portfolio-item\">\n                    <h3><a href=\"{{url_for('ownerLists', owner_id = i.id)}}\">{{i.name}}</a></h3>\n                    <a href=\"#portfolioModal{{cnt}}\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"caption\">\n                            <div class=\"caption-content\">\n                                <i class=\"fa fa-search-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                    <img src={{i.pic_url}} class=\"img-responsive\" alt=\"\">\n                    <a href=\"{{url_for('editOwner', owner_id = i.id)}}\">Edit</a>\n                    <a href=\"{{url_for('deleteOwner', owner_id = i.id)}}\">Delete</a>\n\n                    \n                </p></div>\n                {% endfor %}\n                <!--   End item for loop -->\n\n            </div>\n        </div>\n    </section>\n\n    <!-- Footer -->\n    <footer class=\"text-center\">\n        <div class=\"footer-below\">\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-12\">\n                        TopTenLists by Zacarias Bendeck\n                    </div>\n                </div>\n            </div>\n        </div>\n    </footer>\n\n\n    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->\n    <div class=\"scroll-top page-scroll visible-xs visible-sm\">\n        <a class=\"btn btn-primary\" href=\"#page-top\">\n            <i class=\"fa fa-chevron-up\"></i>\n        </a>\n    </div>\n\n    <!-- Portfolio Modals -->\n<!-- MY Portfolio Modals Looped -->\n    {% set cnt = 0 %}\n    {% for i in items %}\n    {% set cnt = cnt + 1 %}\n    <div class=\"portfolio-modal modal fade\" id=\"portfolioModal{{cnt}}\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n        <div class=\"modal-content\">\n            <div class=\"close-modal\" data-dismiss=\"modal\">\n                <div class=\"lr\">\n                    <div class=\"rl\">\n                    </div>\n                </div>\n            </div>\n            <div class=\"container\">\n                <div class=\"row\">\n                    <div class=\"col-lg-8 col-lg-offset-2\">\n                        <div class=\"modal-body\">\n                            <h2>{{i.name}}</h2>\n                            <h3>{%if i.slogan %}{{i.slogan}}{% endif %}</h3>\n                            <img src= {{i.pic_url}} class=\"img-responsive img-centered\" alt=\"\">\n                            <p>{{i.description}}</p>\n                            <ul class=\"list-inline item-details\">\n                                <li>My Top Ten Lists:\n                                    <strong><a href=\"{{url_for('ownerLists', owner_id = i.id)}}\">They're Awesome!</a>\n                                    </strong>\n                                </li>\n                            </ul>\n                            <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\"><i class=\"fa fa-times\"></i> Close</button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {% endfor %}\n<!--  End My Portfolio Modals Loops!!  -->\n\n\n    <!-- jQuery -->\n    <script src=\"/static/js/jquery.js\"></script>\n\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"/static/js/bootstrap.min.js\"></script>\n\n    <!-- Plugin JavaScript -->\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js\"></script>\n    <script src=\"/static/js/classie.js\"></script>\n    <script src=\"/static/js/cbpAnimatedHeader.js\"></script>\n\n    <!-- Contact Form JavaScript -->\n    <!--\n    <script src=\"/static/js/jqBootstrapValidation.js\"></script>\n    <script src=\"/static/js/contact_me.js\"></script>\n    -->\n\n    <!-- Custom Theme JavaScript -->\n    <script src=\"/static/js/freelancer.js\"></script>\n\n\n\n\n</body></html>",
+			"file": "Templates/mainPage.html",
+			"file_size": 7912,
+			"file_write_time": 130879295853753980,
+			"settings":
+			{
+				"buffer_size": 7797,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Templates/createNewList.html",
+			"settings":
+			{
+				"buffer_size": 5271,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "finalProject2.py",
+			"settings":
+			{
+				"buffer_size": 16177,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Templates/login.html",
+			"settings":
+			{
+				"buffer_size": 5942,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 50.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/J/fullstack/vagrant/Conference App/ud858/Lesson_2/000_Hello_Endpoints/app.yaml",
+		"/J/fullstack/vagrant/Final Project/finalProject.sublime-workspace",
+		"/J/fullstack/vagrant/Final Project/finalProject2.py",
+		"/J/fullstack/vagrant/Final Project/Templates/editOwner.html",
+		"/J/fullstack/vagrant/Final Project/Templates/editItem.html",
+		"/J/fullstack/vagrant/Final Project/Templates/topTenItems.html",
+		"/J/fullstack/vagrant/Final Project/Templates/ownerLists.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/createNewList2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/editItem2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/editList2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/deleteItem3.html",
+		"/J/fullstack/vagrant/Final Project/Templates/deleteItem.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/ownerLists2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/toptenlists.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/deleteItem2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/no longer in use templates/topTenItems2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/createNewOwner.html",
+		"/J/fullstack/vagrant/Final Project/finalProject.py",
+		"/J/fullstack/vagrant/Final Project/Templates/hello.html",
+		"/J/fullstack/vagrant/Final Project/Templates/mainPage2.html",
+		"/J/fullstack/vagrant/Final Project/Templates/mainPage.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/finalProject.py",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/menuTitlehides.html",
+		"/J/fullstack/vagrant/flaskr/flask/examples/flaskr/README",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/editmenuitem.html",
+		"/J/fullstack/vagrant/restaurant/templates/newmenuitem.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/menu.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/toptenlistsold.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/newmenuitem.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/newmenu.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/toptenlists.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/templates/toptenlist.html",
+		"/J/fullstack/vagrant/restaurant/templates/menu.html",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/codegen.py",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/displayrestaurants.py",
+		"/J/fullstack/vagrant/Top Ten Youtube Project/database_setup.pyc",
+		"/J/fullstack/vagrant/restaurant/templates/newmenu.html",
+		"/J/fullstack/vagrant/restaurant/displayrestaurants.py",
+		"/J/fullstack/vagrant/restaurant/templates/editmenuitem.html",
+		"/J/fullstack/vagrant/restaurant/templates/deletemenuitem.html",
+		"/J/fullstack/vagrant/restaurant/templates/menu2.html",
+		"/J/fullstack/vagrant/restaurant/templates/failed_bootstrap_menu.html",
+		"/J/fullstack/vagrant/restaurant/templates/Starter Template for Bootstrap.htm",
+		"/J/fullstack/vagrant/restaurant/project_lesson_3_2.py",
+		"/J/fullstack/vagrant/restaurant/Restaurants Project.sublime-workspace",
+		"/J/fullstack/vagrant/restaurant/webserver.py",
+		"/J/fullstack/vagrant/restaurant/restaurant_webserver_old_mine.py",
+		"/J/fullstack/vagrant/restaurant/restaurant_webserver.py",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/J/fullstack/vagrant/restaurant/lotsofmenus.py",
+		"/J/fullstack/vagrant/restaurant/restaurantmenu.db",
+		"/J/fullstack/vagrant/restaurant/database_setup.pyc",
+		"/I/Dropbox/Dropbox/Cursos/Automate Python/Login_youtube_tutorial.py/login.py",
+		"/I/Dropbox/Dropbox/Cursos/Automate Python/New folder/First Sublime Project.sublime-project",
+		"/I/Dropbox/Dropbox/Cursos/Automate Python/FirstWebScraper.py",
+		"/I/Dropbox/Dropbox/Cursos/Python For Kids/turtle square.py",
+		"/I/Dropbox/Dropbox/Cursos/Python For Kids/Ch.13 Game Bounce/paddlegame.py",
+		"/I/Dropbox/Dropbox/Cursos/Python For Kids/turtle rectangle.py",
+		"/I/Dropbox/Dropbox/Cursos/Python For Kids/turtle box no corners.py",
+		"/I/Dropbox/Dropbox/Cursos/Python For Kids/print 'Hello World'.py",
+		"/C/Users/Z/Desktop/Python Automation/Book Practice/mapIt.py",
+		"/C/Users/Z/Desktop 4/Social Pages.bat",
+		"/C/Users/Z/Desktop/Python Automation/MovieReviewSearcher.py",
+		"/C/Users/Z/Books/Python and AWS Cookbook.epub",
+		"/I/Videos/Learning Courses/Lynda - Design the Web_ From Illustrator to HTML5 Canvas - MG/e-ldtwfithtml5.r00",
+		"/C/RICSWIN/ZACA-RICS 2015-07-30 003230 Category List .scn",
+		"/I/Dropbox/Dropbox/fullstack/vagrant/tournament/tournament.sql",
+		"/I/Dropbox/Dropbox/fullstack/vagrant/tournament/tournament_test.py",
+		"/I/Dropbox/Dropbox/fullstack/vagrant/tournament/tournament.py",
+		"/C/RICSWIN/configfotoshtm.cfg",
+		"/C/Users/Z/Desktop/Python Automation/EntertainMe.py",
+		"/I/Dropbox/Dropbox/Cursos/Udacity/Courses/Full_Stack_Foundations/Lesson_1/Problem_Set_1/PuppyShelters.py",
+		"/I/Dropbox/Dropbox/Cursos/Udacity/Courses/Full_Stack_Foundations/Lesson_1/Problem_Set_1/puppypopulator.py",
+		"/C/Users/Z/AppData/Roaming/Sublime Text 2/Packages/Python/Python.sublime-build",
+		"/I/Dropbox/Dropbox/Cursos/Udacity/Courses/Full_Stack_Foundations/Lesson_1/Problem_Set_1/hello",
+		"/I/Dropbox/Dropbox/Cursos/Udacity/Courses/Full Stack Foundations/Lesson_1/Problem_Set_1/PuppyShelters.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"redirect",
+			"APPLICATION_NAME",
+			"Restaurant",
+			"Resturant",
+			"owners",
+			"deletI",
+			"item_id",
+			"owners",
+			"about",
+			"ttlist_id",
+			"list_id",
+			"restaurant_id",
+			"menu",
+			"MenuItem",
+			"MenuID",
+			"restaurant",
+			"restaurants",
+			"MenuID",
+			"restaurant",
+			"editMenuItem",
+			"newmenuitem",
+			"restaurantMenu",
+			"MenuItem",
+			"restaurant_id",
+			"restaurants",
+			"'])\n",
+			"restaurant",
+			"updatePl",
+			"already"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "database_setup.py",
+					"settings":
+					{
+						"buffer_size": 2574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2574,
+								2574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/J/fullstack/vagrant/Top Ten Youtube Project/database_setup.py",
+					"settings":
+					{
+						"buffer_size": 1465,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								354,
+								354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/J/fullstack/vagrant/restaurant/database_setup.py",
+					"settings":
+					{
+						"buffer_size": 1436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1280,
+								1059
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"file": "/J/fullstack/vagrant/Top Ten Youtube Project/project.py",
+					"settings":
+					{
+						"buffer_size": 3604,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2930,
+								2931
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 765.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/J/fullstack/vagrant/Top Ten Youtube Project/templates/newlistitem.html",
+					"settings":
+					{
+						"buffer_size": 2297,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1666,
+								1666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/J/fullstack/vagrant/Top Ten Youtube Project/templates/menu.html",
+					"settings":
+					{
+						"buffer_size": 3630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2400,
+								2400
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "Templates/createNewItem.html",
+					"settings":
+					{
+						"buffer_size": 5406,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5406,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Templates/no longer in use templates/deleteList2.html",
+					"settings":
+					{
+						"buffer_size": 6430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3445,
+								3236
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 990.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Templates/createNewOwner.html",
+					"settings":
+					{
+						"buffer_size": 5363,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2900,
+								2900
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Templates/deleteOwner.html",
+					"settings":
+					{
+						"buffer_size": 4949,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3415,
+								3415
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 314.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Templates/deleteList.html",
+					"settings":
+					{
+						"buffer_size": 4808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3522,
+								3522
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1048.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Templates/mainPage.html",
+					"settings":
+					{
+						"buffer_size": 7797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1448,
+								1448
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 390.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 12,
+					"file": "Templates/createNewList.html",
+					"settings":
+					{
+						"buffer_size": 5271,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4330,
+								4330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1530.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "finalProject2.py",
+					"settings":
+					{
+						"buffer_size": 16177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12674,
+								12674
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3109.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "Templates/login.html",
+					"settings":
+					{
+						"buffer_size": 5942,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								310,
+								310
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.5,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 366.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/J/fullstack/vagrant/Final Project/finalProject.py"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

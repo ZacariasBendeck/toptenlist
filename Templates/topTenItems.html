@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- start flash message -->
+ 		<h2>{{owner.name}}</h2>
+                    <h1>{{tlist.name}}</h2>
+
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+
+                    <ul>
+                    {% for message in messages %}
+                      <li> <strong> {{message}} </strong> </li>
+                          {% endfor %}
+                    </ul>
+                            {% endif %}
+                    {% endwith %}
+
+
+
+                    <a href="{{url_for('createNewItem', owner_id = owner.id, tlist_id = tlist.id)}}">Create New Item</a>
+                </div>
+            </div>
+
+<!-- start porfolio secion, to be renamed 'Top Ten Section ' -->            
+            <div class="row">
+            {% set cnt = 0 %}  
+            {% for item in items %}
+            
+            	{% if item.rank is number %}
+            	{% set cnt = cnt + 1 %}  
+                <div class="col-sm-4 portfolio-item">
+                    <h3>#{{item.rank}}  {{item.name}}</h3>
+                    <p>{{item.description}}</p>
+                    
+                    <a href="#portfolioModal{{cnt}}" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                    <img src= {{item.url}} class="img-responsive" alt="{{item.second_pic_url}}">
+                    
+                    <a href="{{url_for('editItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Edit</a>
+                    <a href="{{url_for('deleteItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Delete</a>
+                </p></div>
+	           	{% endif %}
+            {% endfor %}
+{% endblock %}
+
+
+<!--start unranked section -->
+{% block unranked %}
+		{% if unranked_items %}	
+			<h2>UNRANKED</h2>
+        
+            {% set cnt = 0 %}  
+            {% for item in unranked_items %}
+            
+            	{% set cnt = cnt + 1 %}  
+                <div class="col-sm-4 portfolio-item">
+                    <h3>{{item.name}}</h3>
+                    <p>{{item.description}}</p>
+                    
+                    <a href="#unrankedModal{{cnt}}" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                    <img src= {{item.url}} class="img-responsive" alt="{{item.second_pic_url}}">
+                	</a>	
+                            </div>
+                        </div>
+
+                    <a href="{{url_for('editItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Edit</a>
+                    <a href="{{url_for('deleteItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Delete</a>  
+                </div>
+
+            {% endfor %}
+                <!--   End item for loop -->
+					
+    {% endif %}
+{% endblock %}
+
+{% block portfoliomodal %}
+
+    <!-- Portfolio Modals -->
+<!-- MY Portfolio Modals Looped -->
+    {% set cnt = 0 %}
+    {% for i in items %}
+    {% set cnt = cnt + 1 %}
+    <div class="portfolio-modal modal fade" id="portfolioModal{{cnt}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>{{i.name}}</h2>
+                            <h3>{%if i.slogan %}{{i.slogan}}{% endif %}</h3>
+                            <img src= {{i.url}} class="img-responsive img-centered" alt="">
+                            <p>{{i.description}}</p>
+                            <ul class="list-inline item-details">
+                            <li>Rerank?:
+   	                        <form action="{{url_for('topTenItems', owner_id = owner.id, tlist_id = tlist.id)}}"method = 'POST'>
+                            <input type ='number' size='30' name ='new_rank'>
+							<input type='hidden' name= 'old_rank_id' value = {{i.id}}>
+                             <input type='submit' value='Rerank' >
+                             </li>
+                             </form>
+
+
+
+                                    <strong></a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+<!--  End My Portfolio Modals Loops!!  -->
+
+    <!-- Unranked Modals -->
+    {% set cnt = 0 %}
+    {% for i in unranked_items %}
+    {% set cnt = cnt + 1 %}
+    <div class="portfolio-modal modal fade" id="unrankedModal{{cnt}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>{{i.name}}</h2>
+                            <h3>{%if i.slogan %}{{i.slogan}}{% endif %}</h3>
+                            <img src= {{i.url}} class="img-responsive img-centered" alt="">
+                            <p>{{i.description}}</p>
+                            <ul class="list-inline item-details">
+
+                             <form action="{{url_for('topTenItems', owner_id = owner.id, tlist_id = tlist.id)}}" method = 'POST'>
+                             <li>Rerank?:<input type ='number' size='30' name ='new_rank'>
+							<input type='hidden' name= 'old_rank_id' value = {{i.id}}>
+                             <input type='submit' value='Rerank' >
+                             </li>
+                             </form>
+
+
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+<!--  End Unranked Modals!!  -->
+
+
+{% endblock %}
