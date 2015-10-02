@@ -29,9 +29,8 @@ session = DBSession()
 @app.route('/')
 @app.route('/topten/')
 def mainPage():
-	print login_session['username']
 	owners = session.query(Owner).all()
-	return render_template('mainPage.html', items = owners)
+	return render_template('mainPage.html', items = owners, login_session = login_session)
 
 @app.route('/topten/items/all')
 def allItems():
@@ -187,7 +186,7 @@ def topTenItems(owner_id, tlist_id):
 			item_to_edit.rank = request.form['new_rank']
 			session.add(item_to_edit)
 			session.commit()
-			return redirect(url_for('topTenItems', owner_id = owner_id, tlist_id = tlist_id))
+			return redirect(url_for('topTenItems', owner_id = owner_id, tlist_id = tlist_id, loggin_session = login_session))
 	else:			
 		if lists == []:
 			flash('There were no lists for this address!!')
@@ -200,11 +199,15 @@ def topTenItems(owner_id, tlist_id):
 				print i.url
 			owner_of_list = session.query(Owner).filter_by(id=owner_id).one()
 			tlist = session.query(Lists).filter_by(id=tlist_id).one()
-			return render_template('topTenItems.html', owner = owner, tlist = tlist, items = items, unranked_items = unranked_items)
+			return render_template('topTenItems.html', owner = owner, tlist = tlist, items = items, unranked_items = unranked_items, login_session = login_session)
 
 #'This page is for CREATING a new item in list # by owner #, template 10
 @app.route('/topten/<int:owner_id>/<int:tlist_id>/new', methods=['GET', 'POST'])
 def createNewItem(owner_id, tlist_id):
+	if 'username' not in login_session:
+		flash('Sorry you must be logged in to create items!!')
+		print ' login session variable is working!!'
+		return redirect('/login')
 	owners = session.query(Owner).filter_by(id=owner_id).all()
 	lists = session.query(Lists).filter_by(id=tlist_id).all()
 	if owners == []:
@@ -229,6 +232,8 @@ def createNewItem(owner_id, tlist_id):
 #'This page is for EDITING item # in list #  by owner # template 11
 @app.route('/topten/<int:owner_id>/<int:tlist_id>/<int:item_id>/edit/', methods=['GET', 'POST'])
 def editItem(owner_id, tlist_id, item_id):
+	if 'username' not in login_session:
+		return redirect('/login')
 	owners = session.query(Owner).filter_by(id=owner_id).all()
 	lists = session.query(Lists).filter_by(id=tlist_id).all()
 	item_to_edit = session.query(Items).filter_by(id=item_id).one()
@@ -293,6 +298,16 @@ def topTenOwnersJSON():
 	owners = session.query(Owner).all()
 	return jsonify(Owner = [i.serialize for i in owners])
 
+@app.route('/topten/lists/JSON/')
+def listsJSON():
+	items = session.query(Lists).all()
+	return jsonify(Lists = [i.serialize for i in items])
+
+@app.route('/topten/items/JSON/')
+def itemsJSON():
+	items = session.query(Items).all()
+	return jsonify(Items = [i.serialize for i in items])
+
 @app.route('/topten/<int:owner_id>/Lists/JSON/')
 def ownerListsJSON(owner_id):
 	lists = session.query(Lists).filter_by(owner_id = owner_id).all()
@@ -303,10 +318,12 @@ def listItemsJSON(lists_id):
 	items = session.query(Items).filter_by(lists_id = lists_id).all()
 	return jsonify(Items = [i.serialize for i in items])
 
-@app.route('/topten/<int:item_id>/Lists/Items/JSON/')
-def itemsJSON(item_id):
+@app.route('/topten/<int:item_id>/JSON/')
+def itemJSON(item_id):
 	items = session.query(Items).filter_by(id = item_id).all()
 	return jsonify(Items = [i.serialize for i in items])
+
+
 ## End JSON API endpoints
 
 ## Start Atomic Feed ###
@@ -387,7 +404,7 @@ def gconnect():
 		response.headers['Content-Type'] = 'application/json'
 		return response
 
-	stored_credentials = login_session.get('credentials')
+	stored_credentials = login_session.get('access_token')
 	stored_gplus_id = login_session.get('gplus_id')
 	if stored_credentials is not None and gplus_id == stored_gplus_id:
 		response = make_response(json.dumps('Current user is already connected.'),
@@ -418,7 +435,7 @@ def gconnect():
 	output += login_session['picture']
 	output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
 	flash("you are now logged in as %s" % login_session['username'])
-	print "done!"
+	print login_session['username'] + 'has logged in with google+...  done!'
 	return output
 
 @app.route('/gdisconnect')
@@ -430,7 +447,8 @@ def gdisconnect():
 			json.dumps('Current user not connected.'), 401)
 		response.headers['Content-Type'] = 'application/json'
 		return response
-	access_token = credentials.access_token
+	print ' login_session credentiasls' + str(login_session.get('credentials'))
+	access_token = credentials
 	url = 'https://accounts.google.com/o/oauth2/revoke?token=%s' % access_token
 	h = httplib2.Http()
 	result = h.request(url, 'GET')[0]
