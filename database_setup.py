@@ -1,23 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Sep 27
-
-@author: Z
-"""
-
-####### CONFIGURATION CODE #############
 import sys
 from sqlalchemy import Column, ForeignKey, Integer, String
-
 from sqlalchemy.ext.declarative import declarative_base
-
 from sqlalchemy.orm import relationship
-
 from sqlalchemy import create_engine
 
 Base = declarative_base()
-
-
 
 ### CLASS Code ###
 class  Owner(Base):
@@ -29,6 +16,9 @@ class  Owner(Base):
     description = Column(String(250))
     pic_url = Column(String(1000))
     slogan = Column(String(250))
+    created = Column(String(100))
+    updated = Column(String(100))
+    email = Column(String(250), nullable = False)
     id =  Column(Integer, primary_key = True)
 
     @property
@@ -37,7 +27,11 @@ class  Owner(Base):
         'name' : self.name,
         'description' : self.description,
         'pic_url': self.pic_url,
-        'id': self.id
+        'id': self.id,
+        "created" : self.created,
+        "updated" : self.updated,
+        'slogan' : self.slogan,
+        'email' : self.email
         }
 
 ### CLASS Code ###
@@ -51,7 +45,8 @@ class  Lists(Base):
     list_type = Column(String(250))
     id =  Column(Integer, primary_key = True)
     pic_url = Column(String(250))
-
+    published = Column(String(100))
+    updated = Column(String(100))
     owner_id = Column(Integer, ForeignKey('owner.id'))
     owner = relationship(Owner)
 
@@ -64,6 +59,8 @@ class  Lists(Base):
         'pic_url': self.pic_url,
         'id': self.id,
         'owner_id' : self.owner_id,
+        "published" : self.published,
+        "updated" : self.updated
         }
 
 
@@ -81,12 +78,11 @@ class Items(Base):  ### classes in camelcase
     pic_url = Column(String(250))
     second_pic_url = Column(String(250))
     essay = Column(String(10000))
-
-
+    published = Column(String(100))
+    updated = Column(String(100))
 
     lists_id = Column(Integer, ForeignKey('lists.id'))
     lists = relationship(Lists)
-
 
     @property
     def serialize(self):
@@ -99,7 +95,9 @@ class Items(Base):  ### classes in camelcase
         'rank': self.rank,
         'lists_id': self.lists_id,
         'essay': self.essay,
-        'rank' : self.rank
+        'rank' : self.rank,
+        "published" : self.published,
+        "updated" : self.updated
         }
 
 ########insert at the end of the file  ###############

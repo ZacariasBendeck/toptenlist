@@ -1,33 +1,53 @@
 {% extends "base.html" %}
-
 {% block content %}
+{% include "header.html" %}
 
-	<h3>Edit an Item!!</h3>
-	<h1>You are Editing <font color = "red">{{item.name}}</font> from {{tlist.name}}</h1>
-	<h4>  by {{owner.name}}</h4>
+<section class="title-header" >
+    <div class="container">
+        <div class="row row-centered">
+            	<h2 class="first-title">EDIT AN ITEM!!</h2>
+					<h2>Editing <span class = "first-title">{{item.name}}</span> from <span class="first-title">{{item.lists.name}}</span></h1>
+				<div class = "col-lg-4">
+					<img class="img-responsive center-block form-picture" src={{item.url}}>
+					<h4>{{item.description}}</h4>
+				</div>
+					
+				<div class="col-lg-4 text-center col-centered">
+					<form action="{{url_for('editItem', owner_id = item.lists.owner_id, tlist_id = tlist.id, item_id = item.id)}}" method = 'POST'>
+					<div class="form-group">
+		                <label for="name">Item Name:</label>
+		                    <input type ='text' class="input-min input-group-sm form-control" name='name' placeholder = {{item.name}}>
+		            </div>
+		            <div class="form-group">
+		                <label for="name">Rank:</label>
+		                    <input type ='number' class="input-min form-control" name='rank' placeholder = {{item.rank}}>
+		            </div>
+		            <div class="form-group">
+		                <label for="name">Description:</label>
+		                    <input type ='text' class="input-min form-control" name='description' placeholder = {{item.description}}>
+		            </div>
+		            <div class="form-group">
+		                <label for="name">Picture Url:</label>
+		                    <input type ='text' class="input-min form-control" name='url' placeholder = {{item.pic_url}}>
+		            </div>
+		            <div class="form-group">
+		                <label for="name">Video Url:</label>
+		                    <input type ='text' class="input-min form-control" name='second_pic_url' placeholder = {{item.second_pic_url}}>
+		            </div>
+		            <div class="form-group">
+		                <input type='submit' value='Edit List' class = "btn btn-submitbutton">
+		                <a href="{{url_for('topTenItems', owner_id = item.lists.owner_id, tlist_id = tlist.id, item_id = item.id)}}">
+		                    <button type="button" class="btn btn-cancelbutton">
+		                    Cancel</button>
+		                </a>
+		            <div>
+				</form>
+			</div>
+        </div>
+    </div>
+</section>
 
-	<h3><img src={{item.url}} class="img-responsive center-block" alt=""></h3>
-	<h4>{{item.description}}</h4>
 
-    <form action="#" method = 'POST'>
-
-	    <dl>
-	    <dt>Name:</dt>
-	    <dd><input type ='text' size='30' name='name' placeholder = {{item.name}}></dd>
-	    <dt>Rank:</dt>
-	    <input type ='number' size='30' name ='rank' placeholder = {{item.rank}}>
-	    <dt>Description:</dt>
-	    <input type ='text' size='30' name ='description' placeholder = {{item.description}}>
-	    <dt>Picture Url:</dt>
-	    <input type ='text' size='30' name = 'url' placeholder = {{item.url}}>
-	    </br>
-	    <dt> Video Url:</dt>
-	    <input type ='text' size='30' name = 'second_pic_url' placeholder = {{item.second_pic_url}}>
-	    </br>
-	    <input type='submit' value='Edit'>
-	    <a href="{{url_for('topTenItems', owner_id = owner.id, tlist_id = tlist.id)}}">   Cancel</a>
-
-    </form>
-
+{% include "footer.html" %}
 {% endblock %}
 

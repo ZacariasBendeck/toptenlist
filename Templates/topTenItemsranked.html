@@ -12,11 +12,12 @@
 
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
-                    <ul>{% for message in messages %}
+                    <ul>
+                    {% for message in messages %}
                       <li> <strong> {{message}} </strong> </li>
                           {% endfor %}
                     </ul>
-                    {% endif %}
+                            {% endif %}
                     {% endwith %}
                     <a href="{{url_for('createNewItem', owner_id = owner.id, tlist_id = tlist.id)}}">Create New Item</a>
                     </div>
@@ -25,31 +26,33 @@
         </section>
 
 <!-- start TopTen secion, to be renamed 'Top Ten Section ' -->            
-    <section class="business-header" >
+    <section class="business-header2" >
         <div class="container">
             <div class="row">
-                <div class="text-center">
-            {% set cnt = 0 %}
+                <div class="text-center" >      
+            {% set cnt = 0 %}  
             {% for item in items %}
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item-gallery">
+            
+            	{% if item.rank is number %}
+            	{% set cnt = cnt + 1 %}  
+                <div class="col-sm-4 portfolio-item">
                     <h3>#{{item.rank}}  {{item.name}}</h3>
                     <p>{{item.description}}</p>
-                    <img class="img-responsive item-image" src= {{item.url}} alt="{{item.second_pic_url}}">
-                </p>
-                {% if login_session.user_id == item.lists.owner_id %}
+                    
+                    <a href="#portfolioModal{{cnt}}" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                    <img src= {{item.url}} class="img-responsive" alt="{{item.second_pic_url}}">
+                    {% if login_session.user_id == item.id %}
                     <a href="{{url_for('editItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Edit</a>
                     <a href="{{url_for('deleteItem', owner_id = owner.id, tlist_id = tlist.id, item_id = item.id)}}">Delete</a>
                     {% endif %}
+                </p>
                 </div>
-
-            {% set cnt = cnt + 1 %}
-            {% if cnt >= 4 %}
-            {% set cnt = 0 %}
-                </div>
-                </div>
-                <div class="row">
-                <div class="text-center" >
-            {% endif %}
+	           	{% endif %}
             {% endfor %}
                 </div>
             </div>

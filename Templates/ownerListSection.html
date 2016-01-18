@@ -1,0 +1,27 @@
+
+    <section class = "business-header1">
+        <div class="container">
+            <h2 class = "section-title20">MOST POPULAR TOP TEN LISTS</h2>
+            <div class="row">
+                
+                <!-- start item for loop -->
+            {% for i in items %}
+                <div class="col-sm-3 portfolio-item">
+                    <h3><a href={{url_for('topTenItems', owner_id = owner.id, tlist_id = i.id)}}>{{i.name}}</a>
+                    <a href="#portfolioModal{{cnt}}" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                    <img src="{{i.pic_url}}" class="img-responsive" alt="/static/img/profile.png">
+                </p></div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+                <!--   End item for loop -->
+
+
+
+ 

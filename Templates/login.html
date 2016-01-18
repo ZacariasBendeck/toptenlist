@@ -1,20 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
 
-  <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
-  </script>
-
-<script src="//apis.google.com/js/platform.js?onload=start"> </script>
 
 <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+</script>
 
-</head>
-
+<script src="//apis.google.com/js/platform.js?onload=start"> </script>
 
 <body>  
+
+<section class="title-header" >
+    <div class="container">
+        <div class="row">
+            <div class="text-center" >
+              <div class = 'flash'>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}      
+                  <ul>{% for message in messages %}
+                      <li> <strong> {{ message }} </strong> </li>
+                  {% endfor %}</ul>
+                  {% endif %}
+                  {% endwith %}
+              </div>
+<!-- GOOGLE PLUS SIGN IN BUTTON-->
+          <h2> SIGN IN TO CREATE YOUR OWN LISTS! </h2>
+          
+          <div id="signInButton">
+          <span class="g-signin"  
+            data-scope="openid email" 
+            data-clientid="681607620951-lv6pvhgkhoaoomq58bdmhkaqo5brn6d3.apps.googleusercontent.com"
+            data-redirecturi="postmessage"
+            data-accesstype="offline"
+            data-cookiepolicy="single_host_origin"
+            data-callback="signInCallback"
+            data-approvalprompt="force">
+          </span>
+
+<!-- basic version of the sdk-->
+
+<!--
+Facebook to be installed later
+    <br>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+-->
+
+        <div id="status">
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<div id="#result"></div>  
 
 <!-- Facebook!!! -->
 <script>
@@ -104,12 +146,6 @@ console.log('I can print!');
   the FB.login() function when clicked.
 -->
 
-<!-- basic version of the sdk-->
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status">
-</div>
 
 <script>
   window.fbAsyncInit = function() {
@@ -128,26 +164,6 @@ console.log('I can print!');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-
-
-
-
-<!-- GOOGLE PLUS SIGN IN BUTTON-->
-
-          
-          <div id="signInButton">
-          <span class="g-signin"  
-            data-scope="openid email" 
-            data-clientid="681607620951-lv6pvhgkhoaoomq58bdmhkaqo5brn6d3.apps.googleusercontent.com"
-            data-redirecturi="postmessage"
-            data-accesstype="offline"
-            data-cookiepolicy="single_host_origin"
-            data-callback="signInCallback"
-            data-approvalprompt="force">
-          </span>
-        </div>
-
-<div id="#result"></div>
 
 <script>
 function signInCallback(authResult) {
@@ -180,8 +196,5 @@ function signInCallback(authResult) {
 </script>
 
 
-<!--END GOOGLE PLUS SIGN IN BUTTON -->
-
-  </body>
-
-  </html>
+{% include 'footer.html' %}
+{% endblock %}

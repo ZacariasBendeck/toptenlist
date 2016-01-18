@@ -1,0 +1,229 @@
+/*!
+ * Start Bootstrap - Business Frontpage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+
+.title-header {
+    color:white;
+    background-color: midnightblue;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+}
+
+.business-header1 {
+    min-height: 100px;
+    background-color: peru;
+    color: bisque;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+
+}
+
+.business-header2 {
+    min-height: 400px;
+    background-color: oldlace;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    color: red;
+}
+
+.business-header3 {
+    min-height: 400px;
+    background-color: powderblue;
+    color: darkslateblue;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+.business-header4 {
+    min-height: 400px;
+    background-color: #000000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+}
+.business-header4 > a {
+    color:orange;
+}
+
+.business-header5 {
+    min-height: 400px;
+    background-color: #ff534b;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.business-header6 {
+    min-height: 400px;
+    color:white;
+    background-color: #021542;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.business-header7 {
+    min-height: 400px;
+    background-color: #0241e2;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.business-header8 {
+    min-height: 400px;
+    background-color: #AAAAAA;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* change the navbar color! */
+.navbar-inverse {
+    background-color: black;
+    color:white;
+}
+
+/* change the navbar brand color! */
+.navbar-inverse .navbar-brand {
+    color: yellow;
+}
+
+.navbar-inverse .nav .navbar-nav .navbar-right .navbar-collapse .collapse{
+    color:yellow;
+}
+
+#bs-example-navbar-collapse-1 {
+    color:yellow;
+}
+
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+footer {
+    padding:30px;
+    background-color: black;
+    min-height:400;
+    color:white;
+}
+#first {
+    background-color: yellow;
+}
+
+.navbar-custom {
+    background-color:black;
+    color:#ffffff;
+    border-radius:0;
+}
+  
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+    padding-left:20px;
+    padding-right:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:black;
+}
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #33aa33;
+}
+      
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+    background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+    background-color:#33aa33;
+}
+
+form {
+    text-align: center;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+/* button styles */
+.btn-cancelbutton {
+    color:white;
+    background-color: orange;
+}
+.btn-submitbutton {
+    color:white;
+    background-color: red;
+}
+.btn-deletebutton {
+    color:white;
+    background-color: indianred;
+}
+
+.item-gallery {
+    height : height 40px;
+}
+.item-image {
+    display; block;
+    width: auto;
+    height:100%;
+}
+
+.first-title {
+    color:orange;
+    text-align:center;
+}
+
+.form-picture {
+    max-height: 500px;
+    max-width: 300px;
+
+}
+

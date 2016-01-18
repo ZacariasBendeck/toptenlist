@@ -1,118 +1,41 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>My Top Ten Lists - Zacarias Bendeck</title>
-
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/static/css/freelancer.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--  *note*   Insert Main Page Title Here -->
-                <a class="navbar-brand" href="{{url_for('mainPage')}}">Top Ten Lists</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="#contact">Login</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Edit a List!!</h2>
-                    <h1>You are Editing {{tlist.name}}</h1>
-                    <h4>  by {{owner.name}}</h4>
-
-                        <form action="#" method = 'POST'>
-
-                        <dl>
-                           <dt>Name:</dt>
-                            <dd><input type ='text' size='30' name='name' placeholder = {{tlist.name}}></dd>
-                          <dt>Description:</dt>
-                            <input type ='text' size='30' name ='description' placeholder = {{tlist.description}}>
-                          <dt>Picture Url:</dt>
-                            <input type ='text' size='30' name = 'pic_url' placeholder = {{tlist.pic_url}}>
-                            </br>
-                        <input type='submit' value='Edit'>
-                        <a href="{{url_for('ownerLists',owner_id = owner.id)}}">   Cancel</a>
-
-                        </form>
-                       
+<section class="title-header">
+    <div class="container">
+        <div class="row row-centered">
+            <h2 class="first-title">EDIT A LIST!!</h2>
+                <h2>Editing <span class="first-title">{{tlist.name}}<span></h2>
+            <div class="col-lg-4 text-center col-centered">
+                <form action = "{{url_for('editList', owner_id = owner.id, tlist_id = tlist.id)}}" method = 'POST'>
+                <div class="form-group">
+                <label for="name">List Name:</label>
+                    <input type ='text' class="input-min form-control" name='name' placeholder = {{tlist.name}}>
                 </div>
-            </div>
-            <div class="row">
+                <div class="form-group">
+                <label for="name">Description: "Top Ten" ... Omit Top Ten label</label>
+                    <input type ='text' class="input-min form-control" name='description' placeholder = {{tlist.description}}>
+                </div>
+                <div class="form-group">
+                <label for="name">Picture URL:</label>
+                    <input type ='text' class="input-min form-control" name='pic_url' placeholder = {{tlist.pic_url}}>
+                </div>
 
+                <div class="form-group">
+                <input type='submit' value='Edit List' class = "btn btn-submitbutton">
+                <a href="{{url_for('ownerLists', owner_id = owner.id)}}">
+                    <button type="button" class="btn btn-cancelbutton">
+                    Cancel</button>
+                </a>
+                <div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-  
-    
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        TopTenLists by Zacarias Bendeck
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll visible-xs visible-sm">
@@ -121,23 +44,6 @@
         </a>
     </div>
 
+{% include "footer.html" %}
 
-
-    <!-- jQuery -->
-    <script src="/static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="/static/js/classie.js"></script>
-    <script src="/static/js/cbpAnimatedHeader.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/static/js/freelancer.js"></script>
-
-
-
-
-</body></html>
+{% endblock %}

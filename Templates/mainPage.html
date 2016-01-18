@@ -1,78 +1,13 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>My Top Ten Lists - Zacarias Bendeck</title>
-
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="/static/css/freelancer.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--  *note*   Insert Main Page Title Here -->
-                <a class="navbar-brand" href="{{url_for('mainPage')}}">Top Ten Lists</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    
-                    <li class="page-scroll">
-                        <a href="#contact">Login</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section class="title-header" >
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-
-                    <h2>Check Out the Top Ten List Authors!!</h2>
+                <div class="text-center" >
+                    <h2>CHECK OUT THE TOP TEN LIST AUTHORS!!</h2>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
 
@@ -83,28 +18,20 @@
                     </ul>
                             {% endif %}
                     {% endwith %}
-                    <h6><a href="{{url_for('createNewOwner')}}">   Create New Author</a></h6>
-
                 </div>
             </div>
-            <div class="row">
-                
+        </div>
+    </section>
+    <section class = "business-header4">
+        <div class="container"    
+            <div class="row"> 
                 <!-- start item for loop -->
             {% set cnt = 0 %}
             {% for i in items %}
             {% set cnt = cnt + 1 %}
-                <div class="col-sm-3 portfolio-item">
+                <div class="col-sm-3 first-section-item">
                     <h3><a href="{{url_for('ownerLists', owner_id = i.id)}}">{{i.name}}</a></h3>
-                    <a href="#portfolioModal{{cnt}}" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
                     <img src={{i.pic_url}} class="img-responsive" alt="">
-                    <a href="{{url_for('editOwner', owner_id = i.id)}}">Edit</a>
-                    <a href="{{url_for('deleteOwner', owner_id = i.id)}}">Delete</a>
-
                     
                 </p></div>
                 {% endfor %}
@@ -114,21 +41,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        TopTenLists by Zacarias Bendeck
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+{{ section2|safe }}
 
+{% include "footer.html" %}
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll visible-xs visible-sm">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
@@ -173,27 +90,4 @@
 <!--  End My Portfolio Modals Loops!!  -->
 
 
-    <!-- jQuery -->
-    <script src="/static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/static/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="/static/js/classie.js"></script>
-    <script src="/static/js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <!--
-    <script src="/static/js/jqBootstrapValidation.js"></script>
-    <script src="/static/js/contact_me.js"></script>
-    -->
-
-    <!-- Custom Theme JavaScript -->
-    <script src="/static/js/freelancer.js"></script>
-
-
-
-
-</body></html>
+{% endblock %}
