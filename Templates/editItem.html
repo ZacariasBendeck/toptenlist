@@ -16,23 +16,23 @@
 					<form action="{{url_for('editItem', owner_id = item.lists.owner_id, tlist_id = tlist.id, item_id = item.id)}}" method = 'POST'>
 					<div class="form-group">
 		                <label for="name">Item Name:</label>
-		                    <input type ='text' class="input-min input-group-sm form-control" name='name' placeholder = {{item.name}}>
+		                    <input type ='text' class="input-min input-group-sm form-control" name='name' value={{item.name}}>
 		            </div>
 		            <div class="form-group">
 		                <label for="name">Rank:</label>
-		                    <input type ='number' class="input-min form-control" name='rank' placeholder = {{item.rank}}>
+		                    <input type ='number' class="input-min form-control" name='rank' value={{item.rank}}>
 		            </div>
 		            <div class="form-group">
 		                <label for="name">Description:</label>
-		                    <input type ='text' class="input-min form-control" name='description' placeholder = {{item.description}}>
+		                    <input type ='text' class="input-min form-control" name='description' value={{item.description}}>
 		            </div>
 		            <div class="form-group">
 		                <label for="name">Picture Url:</label>
-		                    <input type ='text' class="input-min form-control" name='url' placeholder = {{item.pic_url}}>
+		                    <input type ='text' class="input-min form-control" name='pic_url' value={{item.pic_url}}>
 		            </div>
 		            <div class="form-group">
 		                <label for="name">Video Url:</label>
-		                    <input type ='text' class="input-min form-control" name='second_pic_url' placeholder = {{item.second_pic_url}}>
+		                    <input type ='text' class="input-min form-control" name='second_pic_url' value={{item.second_pic_url}}>
 		            </div>
 		            <div class="form-group">
 		                <input type='submit' value='Edit List' class = "btn btn-submitbutton">

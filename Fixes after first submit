@@ -1,0 +1,16 @@
+1. Improved the Readme file
+2. Eliminated unused facebook login functions, and editOwner, which are not in use.
+3. Pep8 fixes Used http://pep8online.com/ 
+	removed spaces around parameter equals
+	changed block comments to start with '#''
+	2 spaces instead of 1 between functions
+	shortened all the lines that were too long, couldn't some lines
+	removed trailing whitespaces
+4. Changed placeholder html tag to value tag
+5. Created decorator function for authentication
+6. Delete print statements
+
+
+ToDo
+1. Implement cascading delete in sql database setup and in delete list function.
+Need to erase database for this implementation.  Will do later. 
